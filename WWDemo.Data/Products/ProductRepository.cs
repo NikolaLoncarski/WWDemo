@@ -48,10 +48,12 @@ namespace WWDemo.Data.Products
             return products;
         }
 
-        public async Task<Product> GetProductBySerialNumber(string serialNumber)
+        public async Task<Product?> GetProductBySerialNumber(string serialNumber)
         {
-            var products = await GetQueryable().Where(s=>s.SerialNumber == serialNumber).FirstOrDefaultAsync();
-            return products;
+
+            var product = await GetQueryable().Where(s => s!.SerialNumber == serialNumber).FirstOrDefaultAsync();
+
+            return product;
         }
     }
 }
