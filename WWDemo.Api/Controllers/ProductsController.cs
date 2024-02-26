@@ -29,6 +29,7 @@ namespace WWDemo.Api.Controllers
 				Name = request.Name,
 				Price = request.Price,
 				SerialNumber = request.SerialNumber,
+				Category = request.Category,
             });
 
             return Ok();
