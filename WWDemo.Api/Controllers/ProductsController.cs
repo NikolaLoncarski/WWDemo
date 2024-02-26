@@ -8,18 +8,18 @@ using WWDemo.Application.Products.Queries.GetProductBySerialNumber;
 
 namespace WWDemo.Api.Controllers
 {
-    [Route("[controller]")]
+	[Route("[controller]")]
 	[ApiController]
 	public class ProductsController : ControllerBase
 	{
 		private readonly IMediator _mediator;
 
-        public ProductsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+		public ProductsController(IMediator mediator)
+		{
+			_mediator = mediator;
+		}
 
-        [HttpPost]
+		[HttpPost]
 		[ProducesResponseType(200)]
 		[ProducesResponseType(400)]
 		public async Task<IActionResult> AddProduct(AddProductRequest request)
@@ -30,26 +30,26 @@ namespace WWDemo.Api.Controllers
 				Price = request.Price,
 				SerialNumber = request.SerialNumber,
 				Category = request.Category,
-            });
+			});
 
-            return Ok();
-        }
+			return Ok();
+		}
 
 		[HttpGet]
-        [ProducesResponseType(typeof(List<ProductRepresentation>), StatusCodes.Status200OK)]
-        public async Task<List<ProductRepresentation>> GetAllProducts()
+		[ProducesResponseType(typeof(List<ProductRepresentation>), StatusCodes.Status200OK)]
+		public async Task<List<ProductRepresentation>> GetAllProducts()
 		{
 			var result = await _mediator.Send(new GetAllProductsQuery());
 
 			return result;
 		}
 
-		[HttpGet("serial-number")]
-		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]int serialNumber)
+		[HttpGet("{serial-number}")]
+		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]string serialNumber)
 		{
-            var result = await _mediator.Send(new GetProductBySerialNumberQuery());// map serial number
+            var result = await _mediator.Send(new GetProductBySerialNumberQuery { SerialNumber = serialNumber});// map serial number
             
-			return Ok();
+			return Ok(result);
 		}
 
 		[HttpDelete]
