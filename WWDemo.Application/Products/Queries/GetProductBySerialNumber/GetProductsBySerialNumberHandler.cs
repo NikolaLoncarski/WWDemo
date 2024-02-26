@@ -16,9 +16,9 @@ namespace WWDemo.Application.Products.Queries.GetProductBySerialNumber
         }
         public async Task<ProductRepresentation> Handle(GetProductBySerialNumberQuery request, CancellationToken cancellationToken)
         {
-            var products = await productRepository.GetProductBySerialNumber(request.SerialNumber);
+            var product = await productRepository.GetProductBySerialNumber(request.SerialNumber);
 
-            var result = _mapper.Map<Models.Product,DTOs.ProductRepresentation>(products!);
+            var result = _mapper.Map<Models.Product,DTOs.ProductRepresentation>(product!);
 
             return result;
         }
