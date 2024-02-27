@@ -52,7 +52,7 @@ namespace WWDemo.Api.Controllers
             
 			return Ok(result);
 		}
-
+		//
         [HttpDelete("{serial-number}")]
         public async Task<IActionResult> DeleteProduct([FromRoute(Name = "serial-number")] string serialNumber)
         {
