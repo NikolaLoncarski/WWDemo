@@ -63,11 +63,6 @@ namespace WWDemo.Api.Controllers
 
         }
     
-		[HttpDelete]
-		public async Task<IActionResult> DeleteProduct()
-		{
-			return Ok();
-		}
 
         [HttpGet]
 		[Route("api/GetProductByName")]
