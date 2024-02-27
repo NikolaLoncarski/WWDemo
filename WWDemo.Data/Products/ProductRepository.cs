@@ -55,5 +55,21 @@ namespace WWDemo.Data.Products
 
             return product;
         }
+
+        public async Task DeleteProductBySerialNumber(string serialNumber)
+        {
+            var product = await _apiDbContext.Products
+                .FirstOrDefaultAsync(p => p.SerialNumber == serialNumber);
+
+            if (product != null)
+            {
+                _apiDbContext.Products.Remove(product);
+                await _apiDbContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new KeyNotFoundException("Product not found!!!");
+            }
+        }
     }
 }
