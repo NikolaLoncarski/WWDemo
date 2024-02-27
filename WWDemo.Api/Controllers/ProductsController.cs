@@ -62,7 +62,7 @@ namespace WWDemo.Api.Controllers
                 return Ok();
 
         }
-    }
+    
 		[HttpDelete]
 		public async Task<IActionResult> DeleteProduct()
 		{
