@@ -71,5 +71,11 @@ namespace WWDemo.Data.Products
                 throw new KeyNotFoundException("Product not found!!!");
             }
         }
+
+        public async Task<Product?> GetProductByName(string name)
+        {
+            var product = await GetQueryable().Where(s => s.Name.Contains(name)).FirstOrDefaultAsync();
+            return product;
+        }
     }
 }
