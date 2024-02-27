@@ -5,6 +5,7 @@ using WWDemo.Application.DTOs;
 using WWDemo.Application.Products.Commands.AddProduct;
 using WWDemo.Application.Products.Queries.GetAllProducts;
 using WWDemo.Application.Products.Queries.GetProductBySerialNumber;
+using WWDemo.Application.Products.Queries.GetProductsByName;
 
 namespace WWDemo.Api.Controllers
 {
@@ -57,5 +58,15 @@ namespace WWDemo.Api.Controllers
 		{
 			return Ok();
 		}
-	}
+
+        [HttpGet]
+		[Route("api/GetProductByName")]
+		
+        public async Task<IActionResult> GetProductByName( string name)
+        {
+            var result = await _mediator.Send(new GetProductByNameQuery { Name = name });
+
+            return Ok(result);
+        }
+    }
 }
