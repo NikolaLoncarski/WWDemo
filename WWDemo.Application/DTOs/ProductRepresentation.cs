@@ -12,6 +12,8 @@
         public string Abrakadabra {  get; set; }
         public string Abrakadabra1 { get; set; }
 
+        public string Aasddsa { get; set; }
+
         public ProductRepresentation()
         {
 
@@ -21,3 +23,6 @@
 
 
     }
+      
+    }
+}
