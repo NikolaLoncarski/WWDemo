@@ -9,7 +9,20 @@
         public decimal? newPrice { get; set; }
         public string? Tag { get; set; }
         public string? AlternateName { get; set; }
-        public string Abrakadabra {  get; set; }  
+        public string Abrakadabra {  get; set; }
+        public string Abrakadabra1 { get; set; }
+     
         public string Aasddsa { get; set; }
+
+        public ProductRepresentation()
+        {
+
+        }
+
+
+
+
+    }
+      
     }
 }
