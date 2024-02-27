@@ -55,5 +55,11 @@ namespace WWDemo.Data.Products
 
             return product;
         }
+
+        public async Task<Product?> GetProductByName(string name)
+        {
+            var product = await GetQueryable().Where(s => s.Name.Contains(name)).FirstOrDefaultAsync();
+            return product;
+        }
     }
 }
